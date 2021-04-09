@@ -19,7 +19,7 @@ class BlogPostTemplate extends React.Component {
           description={
             post.description
               ? post.description.description
-              : post.excerpt.excerpt
+              : post.excerpt
               ? post.excerpt.excerpt
               : `Projet ${post.title} par Jillian Chabal`
           }
