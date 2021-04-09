@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, StaticQuery } from "gatsby"
 import Img from "gatsby-image"
+import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -19,6 +20,12 @@ const ElementsPage = ({ data }, location, ...props) => {
       <article className="post-content page-template no-image">
         <div className="post-content-body">
           <h2 id="images">Shop</h2>
+          {!products.length && (
+            <h3>
+              Pas de photo en vente pour le moment, pour toutes demandes de
+              prestations rendez-vous <a href={"/contact"}>ici</a>
+            </h3>
+          )}
           {products.map(product => {
             const options = {}
             Object.keys(product.node.options.options).map(key => {
