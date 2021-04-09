@@ -4,6 +4,7 @@ import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import "../utils/normalize.css"
 
 class BlogPostTemplate extends React.Component {
   render() {
