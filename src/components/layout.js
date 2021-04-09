@@ -70,6 +70,8 @@ const Layout = props => {
             {/*RSS*/}
             {/*</Link>*/}
             {/*</div>*/}
+
+            <img />
             <div className="header-cart">
               <Link
                 className="Header__summary snipcart-summary snipcart-checkout"
