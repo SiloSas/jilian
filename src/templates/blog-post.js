@@ -16,7 +16,13 @@ class BlogPostTemplate extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title={post.title}
-          description={post.description.description || post.excerpt.excerpt}
+          description={
+            post.description
+              ? post.description.description
+              : post.excerpt.excerpt
+              ? post.excerpt.excerpt
+              : `Projet ${post.title} par Jillian Chabal`
+          }
         />
         <article className={`post-content ${post.thumbnail || `no-image`}`}>
           <header className="post-content-header">
