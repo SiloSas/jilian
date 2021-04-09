@@ -1,5 +1,6 @@
 const urljoin = require("url-join")
 const siteConfig = require("./siteConfig")
+require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
@@ -24,6 +25,23 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-snipcart",
+      options: {
+        apiKey:
+          "OTVmNWYxMWYtYzE2My00MjAxLTg5YmUtNjgwNzRjMDA4MmFmNjM3NTM1NTY3ODA0MDU4NDI3",
+        autopop: true,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `29kqj1i5r3p0`,
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        environment: "master",
       },
     },
     {
@@ -76,12 +94,12 @@ module.exports = {
         // purgeOnly : ['components/', '/main.css', 'bootstrap/'], // Purge only these files/folders
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     //trackingId: `ADD YOUR TRACKING ID HERE`,
+    //   },
+    // },
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,

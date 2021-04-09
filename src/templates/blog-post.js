@@ -7,39 +7,41 @@ import SEO from "../components/seo"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
+    const post = this.props.data.contentfulProject
     const siteTitle = this.props.data.site.siteMetadata.title
+
+    console.log(post)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+          title={post.title}
+          description={post.description.description || post.excerpt.excerpt}
         />
-        <article
-          className={`post-content ${post.frontmatter.thumbnail || `no-image`}`}
-        >
+        <article className={`post-content ${post.thumbnail || `no-image`}`}>
           <header className="post-content-header">
-            <h1 className="post-content-title">{post.frontmatter.title}</h1>
+            <h1 className="post-content-title">{post.title}</h1>
           </header>
 
-          {post.frontmatter.description && (
-            <p class="post-content-excerpt">{post.frontmatter.description}</p>
+          {post.description && (
+            <p class="post-content-excerpt">{post.description.description}</p>
           )}
 
-          {post.frontmatter.thumbnail && (
+          {post.thumbnail && (
             <div className="post-content-image">
               <Img
                 className="kg-image"
-                fluid={post.frontmatter.thumbnail.childImageSharp.fluid}
-                alt={post.frontmatter.title}
+                fluid={post.thumbnail.fluid}
+                alt={post.title}
               />
             </div>
           )}
 
           <div
             className="post-content-body"
-            dangerouslySetInnerHTML={{ __html: post.html }}
+            dangerouslySetInnerHTML={{
+              __html: post.content.childMarkdownRemark.html,
+            }}
           />
 
           <footer className="post-content-footer">
@@ -64,20 +66,30 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    contentfulProject(slug: { eq: $slug }) {
       id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
+      excerpt {
+        childMarkdownRemark {
+          html
+        }
+        excerpt
+      }
+      content {
+        childMarkdownRemark {
+          html
+        }
+      }
+      title
+      date(formatString: "MMMM DD, YYYY")
+      description {
+        childMarkdownRemark {
+          html
+        }
         description
-        thumbnail {
-          childImageSharp {
-            fluid(maxWidth: 1360) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+      }
+      thumbnail {
+        fluid(maxWidth: 1360) {
+          ...GatsbyContentfulFluid_noBase64
         }
       }
     }

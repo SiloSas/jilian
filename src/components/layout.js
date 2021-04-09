@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import "../utils/font-awsome.css"
 
 const Layout = props => {
   const { title, children } = props
@@ -30,10 +31,10 @@ const Layout = props => {
                 <Link to={`/`}>Home</Link>
               </li>
               <li className="nav-about" role="menuitem">
-                <Link to={`/about`}>About</Link>
+                <Link to={`/contact`}>Contact</Link>
               </li>
               <li className="nav-elements" role="menuitem">
-                <Link to={`/elements`}>Elements</Link>
+                <Link to={`/shop`}>Shop</Link>
               </li>
             </ul>
           </nav>
@@ -43,31 +44,48 @@ const Layout = props => {
             </Link>
           </div>
           <div className="site-head-right">
-            <div className="social-links">
-              <a
-                href="https://www.facebook.com"
-                title="Facebook"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
-              </a>
-              <a
-                href="https://twitter.com"
-                title="Twitter"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </a>
+            {/*<div className="social-links">*/}
+            {/*<a*/}
+            {/*href="https://www.facebook.com"*/}
+            {/*title="Facebook"*/}
+            {/*target="_blank"*/}
+            {/*rel="noopener noreferrer"*/}
+            {/*>*/}
+            {/*Facebook*/}
+            {/*</a>*/}
+            {/*<a*/}
+            {/*href="https://twitter.com"*/}
+            {/*title="Twitter"*/}
+            {/*target="_blank"*/}
+            {/*rel="noopener noreferrer"*/}
+            {/*>*/}
+            {/*Twitter*/}
+            {/*</a>*/}
+            {/*<Link*/}
+            {/*to={`/rss.xml`}*/}
+            {/*title="RSS"*/}
+            {/*target="_blank"*/}
+            {/*rel="noopener noreferrer"*/}
+            {/*>*/}
+            {/*RSS*/}
+            {/*</Link>*/}
+            {/*</div>*/}
+            <div className="header-cart">
               <Link
-                to={`/rss.xml`}
-                title="RSS"
-                target="_blank"
-                rel="noopener noreferrer"
+                className="Header__summary snipcart-summary snipcart-checkout"
+                to="#"
               >
-                RSS
+                <i className="fas fa-cart-plus" />
               </Link>
+              {/* <button class="snipcart-add-item"
+                data-item-id="starry-night"
+                data-item-price="79.99"
+                data-item-url="/paintings/starry-night"
+                data-item-description="High-quality replica of The Starry Night by the Dutch post-impressionist painter Vincent van Gogh."
+                data-item-image="/assets/images/starry-night.jpg"
+                data-item-name="The Starry Night">
+                Add to cart
+              </button> */}
             </div>
           </div>
         </div>
@@ -78,15 +96,7 @@ const Layout = props => {
         </div>
       </main>
       <footer className="site-foot">
-        &copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link> &mdash;
-        Built with{" "}
-        <a
-          href="https://gatsbyjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Gatsby
-        </a>
+        &copy; {new Date().getFullYear()} <Link to={`/`}>{title}</Link>
       </footer>
     </div>
   )
