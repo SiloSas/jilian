@@ -4,14 +4,14 @@ import Img from "gatsby-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import "../utils/css/components/global.css"
 import "../utils/normalize.css"
+import "../utils/css/screen.css"
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.contentfulProject
     const siteTitle = this.props.data.site.siteMetadata.title
-
-    console.log(post)
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
