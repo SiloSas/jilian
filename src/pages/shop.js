@@ -14,10 +14,7 @@ const ElementsPage = ({ data }, location, ...props) => {
 
   return (
     <Layout title={siteTitle}>
-      <SEO
-        title="All posts"
-        keywords={[`photographie`, `Ardeche`, `Jillian`]}
-      />
+      <SEO title="Shop" keywords={[`photographie`, `Ardeche`, `Jillian`]} />
 
       <article className="post-content page-template no-image">
         <div className="post-content-body">
@@ -26,7 +23,7 @@ const ElementsPage = ({ data }, location, ...props) => {
             const options = {}
             Object.keys(product.node.options.options).map(key => {
               const value = product.node.options.options[key]
-              const newKey = key.replaceAll("_", "-")
+              const newKey = key.replace(/_/g, "-")
               options[newKey] = value
             })
             return (

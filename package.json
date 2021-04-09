@@ -1,11 +1,11 @@
 {
-  "name": "gatsby-london",
+  "name": "jillian-chabal",
   "private": true,
-  "description": "A custom, image-centric theme for Gatsby",
+  "description": "Shop et book de Jillian Chabal - photographe",
   "version": "1.0.0",
-  "author": "Imed Adel <aadelimed@gmail.com>",
+  "author": "",
   "bugs": {
-    "url": "https://github.com/ImedAdel/gatsby-london/issues"
+    "url": ""
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
