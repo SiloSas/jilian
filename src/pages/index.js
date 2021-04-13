@@ -53,20 +53,8 @@ const indexQuery = graphql`
     allContentfulProject(sort: { fields: [date], order: DESC }) {
       edges {
         node {
-          excerpt {
-            childMarkdownRemark {
-              html
-            }
-            excerpt
-          }
           slug
           title
-          description {
-            childMarkdownRemark {
-              html
-            }
-            description
-          }
           thumbnail {
             fluid(maxWidth: 1360) {
               src

@@ -17,22 +17,12 @@ class BlogPostTemplate extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title={post.title}
-          description={
-            post.description
-              ? post.description.description
-              : post.excerpt
-              ? post.excerpt.excerpt
-              : `Projet ${post.title} par Jillian Chabal`
-          }
+          description={`Projet ${post.title} par Jillian Chabal`}
         />
         <article className={`post-content ${post.thumbnail || `no-image`}`}>
           <header className="post-content-header">
             <h1 className="post-content-title">{post.title}</h1>
           </header>
-
-          {post.description && (
-            <p class="post-content-excerpt">{post.description.description}</p>
-          )}
 
           {post.thumbnail && (
             <div className="post-content-image">
@@ -77,12 +67,6 @@ export const pageQuery = graphql`
     }
     contentfulProject(slug: { eq: $slug }) {
       id
-      excerpt {
-        childMarkdownRemark {
-          html
-        }
-        excerpt
-      }
       content {
         childMarkdownRemark {
           html
@@ -90,12 +74,6 @@ export const pageQuery = graphql`
       }
       title
       date(formatString: "MMMM DD, YYYY")
-      description {
-        childMarkdownRemark {
-          html
-        }
-        description
-      }
       thumbnail {
         fluid(maxWidth: 1360) {
           ...GatsbyContentfulFluid_noBase64
