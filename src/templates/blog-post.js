@@ -26,9 +26,9 @@ class BlogPostTemplate extends React.Component {
 
           {post.thumbnail && (
             <div className="post-content-image">
-              <Img
+              <img
                 className="kg-image"
-                fluid={post.thumbnail.fluid}
+                src={post.thumbnail.fluid.src}
                 alt={post.title}
               />
             </div>
@@ -75,7 +75,7 @@ export const pageQuery = graphql`
       title
       date(formatString: "MMMM DD, YYYY")
       thumbnail {
-        fluid(maxWidth: 1360) {
+        fluid(maxWidth: 1860, quality: 100) {
           ...GatsbyContentfulFluid_noBase64
         }
       }

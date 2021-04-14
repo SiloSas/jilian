@@ -11,7 +11,8 @@ import "../utils/css/screen.css"
 
 const AboutPage = ({ data }, location) => {
   const siteTitle = data.site.siteMetadata.title
-  const html = data.allContentfulContact.edges[0].node.page.html
+  const html =
+    data.allContentfulContact.edges[0].node.page.childMarkdownRemark.html
   const [emailMessage, setEmailMessage] = useState({ message: "" })
 
   function sendEmail(e) {
@@ -43,6 +44,7 @@ const AboutPage = ({ data }, location) => {
         keywords={[`photographie`, `ardeche`, `Jillian`, `contact`]}
       />
       <div
+        style={{ marginTop: 40 }}
         className="post-content-body"
         dangerouslySetInnerHTML={{ __html: html }}
       />
@@ -55,7 +57,7 @@ const AboutPage = ({ data }, location) => {
         <input type="email" name="user_email" />
         <label>Message</label>
         <textarea name="message" />
-        <input type="submit" value="Send" />
+        <input type="submit" style={{ marginTop: 10 }} value="Envoyer" />
       </form>
     </Layout>
   )

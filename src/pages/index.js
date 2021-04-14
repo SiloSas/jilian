@@ -56,7 +56,7 @@ const indexQuery = graphql`
           slug
           title
           thumbnail {
-            fluid(maxWidth: 1360) {
+            fluid(maxWidth: 1860, quality: 100) {
               src
               srcSet
               srcWebp
