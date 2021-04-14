@@ -43,11 +43,6 @@ const AboutPage = ({ data }, location) => {
         title="Contact"
         keywords={[`photographie`, `ardeche`, `Jillian`, `contact`]}
       />
-      <div
-        style={{ marginTop: 40 }}
-        className="post-content-body"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
       <h3>{emailMessage.message}</h3>
       <form className="contact-form" onSubmit={sendEmail}>
         <input type="hidden" name="contact_number" />
@@ -59,6 +54,11 @@ const AboutPage = ({ data }, location) => {
         <textarea name="message" />
         <input type="submit" style={{ marginTop: 10 }} value="Envoyer" />
       </form>
+      <div
+        style={{ marginTop: 40 }}
+        className="post-content-body"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
     </Layout>
   )
 }
