@@ -11,7 +11,9 @@ import "../utils/css/screen.css"
 
 const ElementsPage = ({ data }, location, ...props) => {
   const siteTitle = data.site.siteMetadata.title
-  const products = data.allContentfulProduct.edges
+  const products = data.allContentfulProduct
+    ? data.allContentfulProduct.edges
+    : []
 
   return (
     <Layout title={siteTitle}>
@@ -77,37 +79,37 @@ const indexQuery = graphql`
         description
       }
     }
-    allContentfulProduct(sort: { fields: [date], order: DESC }) {
-      edges {
-        node {
-          id
-          title
-          description {
-            childMarkdownRemark {
-              html
-            }
-            description
-          }
-          photo {
-            fluid(maxWidth: 1360) {
-              ...GatsbyContentfulFluid_noBase64
-            }
-          }
-          date(formatString: "MMMM DD, YYYY")
-          price
-          options {
-            options {
-              data_item_custom2_name
-              data_item_custom2_options
-              data_item_custom1_name
-              data_item_custom1_options
-            }
-          }
-        }
-      }
-    }
   }
 `
+//allContentfulProduct(sort: { fields: [date], order: DESC }) {
+//       edges {
+//         node {
+//           id
+//           title
+//           description {
+//             childMarkdownRemark {
+//               html
+//             }
+//             description
+//           }
+//           photo {
+//             fluid(maxWidth: 1360) {
+//               ...GatsbyContentfulFluid_noBase64
+//             }
+//           }
+//           date(formatString: "MMMM DD, YYYY")
+//           price
+//           options {
+//             options {
+//               data_item_custom2_name
+//               data_item_custom2_options
+//               data_item_custom1_name
+//               data_item_custom1_options
+//             }
+//           }
+//         }
+//       }
+//     }
 
 export default props => (
   <StaticQuery
